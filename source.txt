@@ -1,0 +1,2 @@
+https://editor.freelogodesign.org/?companyName=podcast&category=9
+https://cors-anywhere.herokuapp.com/https://www.podcastrepublic.net
