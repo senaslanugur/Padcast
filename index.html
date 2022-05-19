@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <script src="./js/connect.js" charset="utf-8"></script>
         <link href="css/styles.css" rel="stylesheet" />
@@ -25,9 +26,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="about()">About</a></li>
                     </ul>
                 </div>
             </div>
@@ -75,5 +75,16 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="js/category_result.js"></script>
+        <script type="text/javascript">
+
+        function about(){
+          Swal.fire({
+            title: 'Podcast',
+            html:"You can give us your feedback <a href='mailto:senaslanugur@gmail.com'><b><u> here.</b></u></a> <br> <p>&copy;Copyright 2022. All Rights Reserved.<br> <b>USoft </b>by senaslanbilisim </p>",
+            imageUrl: 'assets/podcast.png',
+            imageAlt: 'Custom image',
+          });
+          }
+        </script>
     </body>
 </html>
