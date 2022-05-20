@@ -21,7 +21,7 @@ function get_data(){
   var url = "https://cors-anywhere.herokuapp.com/https://www.podcastrepublic.net"
   $.ajax({ url: url,
     headers: {'Access-Control-Allow-Origin': '*' },
-    async:false,
+    async:true,
     success: function(a) {
       data = a
      },
