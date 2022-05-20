@@ -1,5 +1,5 @@
 var podcasts = localStorage.getItem("podcasts")
-$("#loader").show();
+
 $.ajax({ url: podcasts,
   headers: {'Access-Control-Allow-Origin': '*' },
   async:true,
@@ -28,7 +28,7 @@ $.ajax({ url: podcasts,
 
    },
 })
-$("#loader").hide();
+
 
 
 "use strict";
