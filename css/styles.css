@@ -4516,7 +4516,7 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 3.25rem;
 }
 .card > hr {
   margin-right: 0;
@@ -7913,6 +7913,10 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
 }
+.text-my-offset {
+  --bs-text-opacity: 1;
+  color: #85586F !important;
+}
 
 .text-body {
   --bs-text-opacity: 1;
@@ -8033,6 +8037,10 @@ textarea.form-control-lg {
 
 .bg-opacity-100 {
   --bs-bg-opacity: 1;
+}
+.bg-my-offset {
+  --bs-bg-opacity: 1;
+  background-color:#525E75 !important;
 }
 
 .bg-gradient {
