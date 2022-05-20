@@ -2,7 +2,7 @@ var url = localStorage.getItem("url")
 
 $.ajax({ url: url,
   headers: {'Access-Control-Allow-Origin': '*' },
-  async:false,
+  async:true,
   success: function(a) {
     var test = document.getElementById("test")
     var el = document.createElement( 'html' );
