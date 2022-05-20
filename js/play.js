@@ -2,7 +2,7 @@ var podcasts = localStorage.getItem("podcasts")
 
 $.ajax({ url: podcasts,
   headers: {'Access-Control-Allow-Origin': '*' },
-  async:true,
+  async:false,
   success: function(a) {
     var test = document.getElementById("pictures")
     var el = document.createElement( 'html' );
