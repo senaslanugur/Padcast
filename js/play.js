@@ -2,7 +2,7 @@ var podcasts = localStorage.getItem("podcasts")
 
 $.ajax({ url: podcasts,
   headers: {'Access-Control-Allow-Origin': '*' },
-  async:true,
+  async:false,
   success: function(a) {
     var test = document.getElementById("pictures")
     var el = document.createElement( 'html' );
@@ -16,13 +16,11 @@ $.ajax({ url: podcasts,
     var audios = document.getElementById("audios")
 
 
-    for(var i=0; i<title.length; i++){
+    for(var i=0; i<10; i++){
         audios.innerHTML += '<li class="player__song"><img class="player__img img" src="'+images[i].textContent+'" alt="cover"><p class="player__context">'+
                             '<b class="player__song-name">'+title[i].textContent+'</b><span class="flex"><span class="player__title">'+title[i].textContent+
                             '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+urls[i].textContent+'"></audio></li>'
         test.innerHTML += '<img class="img slider__img" src="'+images[i].textContent+'" alt="cover">'
-
-
     }
 
 

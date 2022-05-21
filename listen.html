@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <link href="css/listen.css" rel="stylesheet" />
         <style media="screen">
@@ -73,10 +74,87 @@
         }
 
 
+        /* only animate if the device supports hover */
+        @media (hover: hover) {
+          #creditcard {
+            /*  set start position */
+            transform: translateY(110px);
+            transition: transform 0.1s ease-in-out;
+            /*  set transition for mouse enter & exit */
+          }
+
+          #money {
+            /*  set start position */
+            transform: translateY(180px);
+            transition: transform 0.1s ease-in-out;
+            /*  set transition for mouse enter & exit */
+          }
+
+          button:hover #creditcard {
+            transform: translateY(0px);
+            transition: transform 0.2s ease-in-out;
+            /*  overide transition for mouse enter */
+          }
+
+          button:hover #money {
+            transform: translateY(0px);
+            transition: transform 0.3s ease-in-out;
+            /*  overide transition for mouse enter */
+          }
+        }
+
+        @keyframes bounce {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-0.25rem);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+
+        .button:hover .button__text span {
+          transform: translateY(-0.25rem);
+          transition: transform .2s ease-in-out;
+        }
+
+        /* styling */
+
+        @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+
+
+        .button {
+          border: none;
+          outline: none;
+          padding: 1rem 90px 1rem 2rem;
+          position: relative;
+          border-radius: 20px;
+          letter-spacing: 0.7px;
+          background-color: #5086bd;
+          color: #fff;
+          font-size: 15px;
+          font-family: "Lato", sans-serif;
+          cursor: pointer;
+          box-shadow: rgba(0, 9, 61, 0.2) 0px 4px 8px 0px;
+        }
+
+        .button:active {
+          transform: translateY(1px);
+        }
+
+        .button__svg {
+          position: absolute;
+          overflow: visible;
+          bottom: 6px;
+          right: 0.2rem;
+          height: 140%;
+        }
+
         </style>
     </head>
     <body>
-
 
 
         <div class="middle" id="loader" >
@@ -298,8 +376,13 @@
                 </li> -->
 
               </ul>
-
+              <button class="button" onclick=for_more()>
+                <span class="button__text">For More  <span class="mdi mdi-lock-open-plus"></span></span>
+              </button>
             </div>
+
+
+
             <script>
                  document.onreadystatechange = function() {
                      if (document.readyState !== "complete") {
@@ -314,6 +397,15 @@
                            "body").style.visibility = "visible";
                      }
                  };
+
+
+                 function for_more(){
+                   Swal.fire({
+                     title: 'Podcast',
+                     html:"in development <br>  by <b>USoft </b> ",
+                     imageUrl: 'assets/podcast.png',
+                   });
+                 }
           </script>
             <script src="./js/play.js" charset="utf-8"></script>
 
