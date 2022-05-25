@@ -18,19 +18,19 @@ document.cookie="region=" + "tr" + ";expires=" + exp.toGMTString() + ";path=/";
 
 function get_data(){
   var data =""
-  var url = "https://cors-anywhere.herokuapp.com/https://www.podcastrepublic.net"
+  var url = "https://api.allorigins.win/get?url=https://www.podcastrepublic.net"
   $.ajax({ url: url,
-    headers: {'Access-Control-Allow-Origin': '*' },
+    headers: {'Access-Control-Allow-Origin': '*'},
     async:false,
     success: function(a) {
       data = a
      },
   });
-  if (data === "") {
-    test()
-  }
+  // if (data === "") {
+  //   test()
+  // }
   var el = document.createElement( 'html' );
-  el.innerHTML = data;
+  el.innerHTML = data.contents;
   var span  = el.getElementsByClassName("thumbnail")// Live NodeList of your anchor element
   var caption  = el.getElementsByClassName("caption")
   var urls = el.getElementsByTagName("a")
