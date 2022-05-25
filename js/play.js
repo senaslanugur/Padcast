@@ -1,50 +1,101 @@
 var podcasts = localStorage.getItem("podcasts")
 
-var picture = []
-var mp3 = []
-var titles = []
+var xmlhttp = new XMLHttpRequest();
 
-$.ajax({ url: podcasts,
-  headers: {'Access-Control-Allow-Origin': '*' },
-  async:false,
-  cache: false,
-  success: function(a) {
-    // var test = document.getElementById("pictures")
-    var el = document.createElement( 'html' );
-    el.innerHTML = a;
+xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        var el = document.createElement( 'html' );
+        el.innerHTML = myArr.contents;
+        var test = document.getElementById("pictures")
+        var images = el.getElementsByClassName("episode_img_url")
 
-    var images = el.getElementsByClassName("episode_img_url")
+        var title = el.getElementsByClassName("episode_title")
 
-    var title = el.getElementsByClassName("episode_title")
+        var urls = el.getElementsByClassName("episode_url")
+        var audios = document.getElementById("audios")
 
-    var urls = el.getElementsByClassName("episode_url")
-    // var audios = document.getElementById("audios")
+        for(var i=0; i<10; i++){
+            audios.innerHTML += '<li class="player__song"><img class="player__img img" src="'+images[i].textContent+'" alt="cover"><p class="player__context">'+
+                                '<b class="player__song-name">'+title[i].textContent+'</b><span class="flex"><span class="player__title">'+title[i].textContent+
+                                '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+urls[i].textContent+'"></audio></li>'
+            test.innerHTML += '<img class="img slider__img" src="'+images[i].textContent+'" alt="cover">'
+        }
+    }else{
 
-    // for(var i=0; i<10; i++){
-    //     audios.innerHTML += '<li class="player__song"><img class="player__img img" src="'+images[i].textContent+'" alt="cover"><p class="player__context">'+
-    //                         '<b class="player__song-name">'+title[i].textContent+'</b><span class="flex"><span class="player__title">'+title[i].textContent+
-    //                         '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+urls[i].textContent+'"></audio></li>'
-    //     test.innerHTML += '<img class="img slider__img" src="'+images[i].textContent+'" alt="cover">'
-    // }
-
-    for(var i=0; i<10; i++){
-      picture.push(images[i].textContent)
-      mp3.push(urls[i].textContent)
-      titles.push(title[i].textContent)
+      // let timerInterval
+      // Swal.fire({
+      //   title: 'Loading',
+      //   html: ' thay will be avaliable after <b style="color:blue"></b> milliseconds.',
+      //   timer: 2000,
+      //   timerProgressBar: true,
+      //   imageUrl: 'assets/podcast.png',
+      //   imageAlt: 'Custom image',
+      //   didOpen: () => {
+      //     Swal.showLoading()
+      //     const b = Swal.getHtmlContainer().querySelector('b')
+      //     timerInterval = setInterval(() => {
+      //       b.textContent = Swal.getTimerLeft()
+      //     }, 100)
+      //   },
+      //   willClose: () => {
+      //     clearInterval(timerInterval)
+      //   }
+      // }).then((result) => {
+      //   /* Read more about handling dismissals below */
+      //   if (result.dismiss === Swal.DismissReason.timer) {
+      //     console.log('I was closed by the timer')
+      //   }
+      // })
     }
+};
 
-   },
-   dataType: 'html',
-})
-var audios = document.getElementById("audios")
-var pictures = document.getElementById("pictures")
+xmlhttp.open('GET', document.location.protocol + '//api.allorigins.win/get?url='+escape(podcasts, true));
+xmlhttp.send();
 
-for(var i=0; i<10; i++){
-  audios.innerHTML += '<li class="player__song"><img class="player__img img" src="'+picture[i]+'" alt="cover"><p class="player__context">'+
-                      '<b class="player__song-name">'+titles[i]+'</b><span class="flex"><span class="player__title">'+titles[i]+
-                      '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+mp3[i]+'"></audio></li>'
-  pictures.innerHTML += '<img class="img slider__img" src="'+picture[i]+'" alt="cover">'
-}
+
+
+// $.ajax({ url: podcasts,
+//   headers: {'Access-Control-Allow-Origin': '*' },
+//   async:false,
+//   cache: false,
+//   success: function(a) {
+//     // var test = document.getElementById("pictures")
+//     var el = document.createElement( 'html' );
+//     el.innerHTML = a;
+//
+//     var images = el.getElementsByClassName("episode_img_url")
+//
+//     var title = el.getElementsByClassName("episode_title")
+//
+//     var urls = el.getElementsByClassName("episode_url")
+//     var audios = document.getElementById("audios")
+//
+//     // for(var i=0; i<10; i++){
+//     //     audios.innerHTML += '<li class="player__song"><img class="player__img img" src="'+images[i].textContent+'" alt="cover"><p class="player__context">'+
+//     //                         '<b class="player__song-name">'+title[i].textContent+'</b><span class="flex"><span class="player__title">'+title[i].textContent+
+//     //                         '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+urls[i].textContent+'"></audio></li>'
+//     //     test.innerHTML += '<img class="img slider__img" src="'+images[i].textContent+'" alt="cover">'
+//     // }
+//
+//     for(var i=0; i<10; i++){
+//       picture.push(images[i].textContent)
+//       mp3.push(urls[i].textContent)
+//       titles.push(title[i].textContent)
+//     }
+//
+//    },
+//    dataType: 'html',
+// })
+// var audios = document.getElementById("audios")
+// var pictures = document.getElementById("pictures")
+//
+// for(var i=0; i<10; i++){
+//   audios.innerHTML += '<li class="player__song"><img class="player__img img" src="'+picture[i]+'" alt="cover"><p class="player__context">'+
+//                       '<b class="player__song-name">'+titles[i]+'</b><span class="flex"><span class="player__title">'+titles[i]+
+//                       '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+mp3[i]+'"></audio></li>'
+//   pictures.innerHTML += '<img class="img slider__img" src="'+picture[i]+'" alt="cover">'
+// }
 
 "use strict";
 
