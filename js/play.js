@@ -50,7 +50,7 @@ xmlhttp.onreadystatechange = function () {
     }
 };
 
-xmlhttp.open('GET', document.location.protocol + '//api.allorigins.win/get?url='+escape(podcasts, true));
+xmlhttp.open('GET', document.location.protocol + '//api.allorigins.win/get?url='+escape(podcasts, true),false);
 xmlhttp.send();
 
 
