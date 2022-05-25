@@ -18,7 +18,7 @@ document.cookie="region=" + "tr" + ";expires=" + exp.toGMTString() + ";path=/";
 
 function get_data(){
   var data =""
-  var url = "https://api.allorigins.win/get?url=https://www.podcastrepublic.net"
+  var url = "https://api.allorigins.win/get?url="+encodeURIComponent("https://www.podcastrepublic.net")
   $.ajax({ url: url,
     headers: {'Access-Control-Allow-Origin': '*'},
     async:false,
