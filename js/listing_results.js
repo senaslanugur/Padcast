@@ -49,6 +49,7 @@ xmlhttp.onreadystatechange = function () {
 
       let timerInterval
       Swal.fire({
+        toast:true,
         title: 'Loading',
         html: ' thay will be avaliable after <b style="color:blue"></b> milliseconds.',
         timer: 2000,
