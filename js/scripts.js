@@ -16,7 +16,7 @@ var exp = new Date();
 
 exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000);
 
-document.cookie="region=" + "tr" + ";expires=" + exp.toGMTString() + ";path=/";
+document.cookie="region=" + "tr" + ";expires=" + exp.toGMTString() + ";path=/"+";domain=www.podcastrepublic.net";
 
 function get_data(){
 
