@@ -34,9 +34,14 @@ function get_data(){
                 var htr = document.getElementById("interface")
                 for(var i=12;i<span.length;i++){
                   var url_cat ="https://www.podcastrepublic.net"
-                  htr.innerHTML += '<a href="./category_result.html" style=" text-decoration: none; color:black;" <div class="row gx-lg-5" id="https://www.podcastrepublic.net'+urls[i+13].getAttribute("href")+'" onclick="category_result(this)"> <div class="col-lg-6 col-xxl-4 mb-5" ><div class="card bg-light border-0 h-100" ><div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0" >'+
-                                    '<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">'+ span[i].innerHTML+'</div><h2 class="fs-4 fw-bold">'+caption[i].innerHTML+'</h2>'+
-                                    '<p class="mb-0"></p></div></div></div></a>'
+                  // for backup index
+                  // htr.innerHTML += '<a href="./category_result.html" style=" text-decoration: none; color:black;" <div class="row gx-lg-5" id="https://www.podcastrepublic.net'+urls[i+13].getAttribute("href")+'" onclick="category_result(this)"> <div class="col-lg-6 col-xxl-4 mb-5" ><div class="card bg-light border-0 h-100" ><div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0" >'+
+                  //                   '<div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">'+ span[i].innerHTML+'</div><h2 class="fs-4 fw-bold">'+caption[i].innerHTML+'</h2>'+
+                  //                   '<p class="mb-0"></p></div></div></div></a>'
+                  htr.innerHTML += '<a href="./category_result.html" style=" text-decoration: none; color:black;"> <div class="col mb-5" id="https://www.podcastrepublic.net'+urls[i+13].getAttribute("href")+'" onclick="category_result(this)"> <div class="card h-100" style="box-shadow:  #92B4EC -5px 5px">'+
+                                  '<div class="card-body p-4"><div class="text-center"><br><div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">'+span[i].innerHTML+'</div>'+
+                                  '<h5 class="fw-bolder">'+caption[i].getElementsByTagName("h4")[0].innerHTML+'</h5></div></div></div></div>'
+                                  console.log(caption[i].getElementsByTagName("h4")[0].innerHTML)
                 }
 
             }else{
