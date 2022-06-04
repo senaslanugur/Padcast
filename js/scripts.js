@@ -77,3 +77,18 @@ function get_data(){
         xmlhttp.send();
 }
 get_data()
+
+
+$("#searchgeneral").mouseup(function() {
+    generalSearch = document.getElementById("generalSearch").value
+
+
+    if(generalSearch === ""){
+      alert("empty")
+    }else{
+      url = "https://www.podcastrepublic.net/search?title=" + generalSearch
+      localStorage.setItem("url",url)
+      location.href = "./search.html";
+    }
+
+});
