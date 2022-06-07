@@ -34,13 +34,18 @@
             </div>
         </nav>
         <!-- Header-->
+        <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+                  <div class="text-center">
+                      <img class="img-fluid rounded-circle mb-4" src="assets/podcast2.png">
+                      <h1 class="text-white fs-3 fw-bolder">Be alive with Podcast</h1><hr>
+                  </div>
+        </header>
 
         <header class="py-5">
           <div class="badge rounded-pill bg-primary-soft text-primary badge-marketing mb-3">Popular Podcasts</div>
           <div class="container px-lg-5" >
 
-                  <div class="m-4 m-lg-5"  >
-
+                  <div class="m-lg-5">
                     <div id="wrapper">
                         <div id="carousel">
                           <div id="content">
@@ -53,13 +58,13 @@
                           </div>
                         </div>
                         <button id="prev">
-                          <svg xmlns="http://www.w3.org/2000/svg"   width="12" height="12" viewBox="0 0 24 24" >
+                          <svg xmlns="http://www.w3.org/2000/svg"   width="20" height="20" viewBox="0 0 24 24" >
                             <path fill="none" d="M0 0h24v24H0V0z" />
                             <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
                           </svg>
                         </button>
                         <button id="next">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" >
                             <path fill="none" d="M0 0h24v24H0V0z" />
                             <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
                           </svg>
@@ -74,7 +79,7 @@
       <div class="badge rounded-pill bg-primary-soft text-primary badge-marketing mb-3">Categories</div>
       <div>
         <input type="text" id="generalSearch" placeholder="Search any podcast in any language" title="Type in a name">
-        <button type="button" id="searchgeneral" class="btn btn-primary" style="padding: 11px; position: absolute; right: 0px;">Search</button>
+        <button type="button" id="searchgeneral" class="btn btn-primary" style="padding: 16px; position: absolute; right: 0px;">Search</button>
       </div>
         <section class="py-5">
 
@@ -108,17 +113,5 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="js/category_result.js"></script>
-        <script type="text/javascript">
-
-        function about(){
-          Swal.fire({
-            toast: true,
-            title: 'Podcast',
-            html:"You can give us your feedback <a href='mailto:senaslanugur@gmail.com'><b><u> here.</b></u></a> <br> <p>&copy;Copyright 2022. All Rights Reserved.<br> <b>USoft </b>by senaslanbilisim </p>",
-            imageUrl: 'assets/podcast.png',
-            imageAlt: 'Custom image',
-          });
-          }
-        </script>
     </body>
 </html>

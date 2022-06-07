@@ -1,5 +1,5 @@
 var podcasts = localStorage.getItem("podcasts")
-
+const bgBody = [];
 var xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function () {
@@ -20,6 +20,7 @@ xmlhttp.onreadystatechange = function () {
                                 '<b class="player__song-name">'+title[i].textContent+'</b><span class="flex"><span class="player__title">'+title[i].textContent+
                                 '</span><span class="player__song-time"></span></span></p><audio class="audio" src="'+urls[i].textContent+'"></audio></li>'
             test.innerHTML += '<img class="img slider__img" src="'+images[i].textContent+'" alt="cover">'
+            bgBody.push("url('"+images[i].textContent+"')")
         }
     }else{
 
@@ -100,7 +101,7 @@ xmlhttp.send();
 "use strict";
 
 // add elemnts
-const bgBody = ["#e5e7e9", "#ff4545", "#f8ded3", "#ffc382", "#f5eda6", "#ffcbdc", "#dcf3f3"];
+// const bgBody = ["#e5e7e9", "#ff4545", "#f8ded3", "#ffc382", "#f5eda6", "#ffcbdc", "#dcf3f3"];
 const body = document.body;
 const player = document.querySelector(".player");
 const playerHeader = player.querySelector(".player__header");
@@ -206,7 +207,10 @@ function changeSliderContext() {
 }
 
 function changeBgBody() {
-    body.style.backgroundColor = bgBody[count];
+    // body.style.backgroundColor = bgBody[count];
+    body.style.backgroundImage = bgBody[count];
+    body.style.backgroundRepeat = "";
+    body.style.backgroundSize = "100% auto";
 }
 
 function selectSong() {
@@ -349,3 +353,4 @@ playerPlayList.forEach((item, index) => {
     });
 
 });
+openPlayer()
