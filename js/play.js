@@ -22,6 +22,7 @@ xmlhttp.onreadystatechange = function () {
             test.innerHTML += '<img class="img slider__img" src="'+images[i].textContent+'" alt="cover">'
             bgBody.push("url('"+images[i].textContent+"')")
         }
+
     }else{
 
       // let timerInterval
@@ -245,7 +246,7 @@ function playSong() {
         song.play();
         playIcon.style.display = "none";
         pauseIcon.style.display = "block";
-
+        changeBgBody()
     }else{
         song.pause();
         isPlay = false;
