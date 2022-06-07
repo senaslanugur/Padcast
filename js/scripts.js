@@ -1,17 +1,57 @@
-// var url = "www.podcastrepublic.net";
-//
-// var xhr = new XMLHttpRequest();
-// xhr.open("GET", url);
-//
-//
-//
-// xhr.onreadystatechange = function () {
-//    if (xhr.readyState === 4) {
-//       console.log(xhr.status);
-//       console.log(xhr.responseText);
-//    }};
-//https://cors-anywhere.herokuapp.com/https://www.podcastrepublic.net
-// xhr.send();
+function get_popular(){
+  var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var myArr = JSON.parse(this.responseText);
+                myArr = JSON.parse(myArr.contents)
+                console.log(myArr)
+                var popular_div = document.getElementById("content")
+                for(var i = 0; i<myArr.length;i++){
+                  popular_div.innerHTML += '<div onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+myArr[i].pId+'"><img class="item" src="'+myArr[i].imageHD+'"/><h5 class="fw-bolder">'+myArr[i].title+'</h5> by '+myArr[i].publisher+'</div>'
+
+                }
+
+            }else{
+            }
+        };
+
+        xmlhttp.open('GET', document.location.protocol + '//api.allorigins.win/get?url='+escape("https://www.podcastrepublic.net/api/popular", true));
+        xmlhttp.send();
+
+
+
+}
+
+
+const gap = 200;
+const carousel = document.getElementById("carousel"),
+  content = document.getElementById("content"),
+  next = document.getElementById("next"),
+  prev = document.getElementById("prev");
+
+next.addEventListener("click", e => {
+  carousel.scrollBy(width + gap, 0);
+  if (carousel.scrollWidth !== 0) {
+    prev.style.display = "flex";
+  }
+  if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "none";
+  }
+});
+prev.addEventListener("click", e => {
+  carousel.scrollBy(-(width + gap), 0);
+  if (carousel.scrollLeft - width - gap <= 0) {
+    prev.style.display = "none";
+  }
+  if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+    next.style.display = "flex";
+  }
+});
+
+let width = carousel.offsetWidth;
+window.addEventListener("resize", e => (width = carousel.offsetWidth));
+
 var exp = new Date();
 
 exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000);
@@ -41,7 +81,7 @@ function get_data(){
                   htr.innerHTML += '<a href="./category_result.html" style=" text-decoration: none; color:black;"> <div class="col mb-5" id="https://www.podcastrepublic.net'+urls[i+13].getAttribute("href")+'" onclick="category_result(this)"> <div class="card h-100" style="box-shadow:  #92B4EC -5px 5px">'+
                                   '<div class="card-body p-4"><div class="text-center"><br><div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">'+span[i].innerHTML+'</div>'+
                                   '<h5 class="fw-bolder">'+caption[i].getElementsByTagName("h4")[0].innerHTML+'</h5></div></div></div></div>'
-                                  console.log(caption[i].getElementsByTagName("h4")[0].innerHTML)
+                                  // console.log(caption[i].getElementsByTagName("h4")[0].innerHTML)
                 }
 
             }else{
@@ -76,9 +116,15 @@ function get_data(){
         xmlhttp.open('GET', document.location.protocol + '//api.allorigins.win/get?url='+escape("https://www.podcastrepublic.net", true));
         xmlhttp.send();
 }
+get_popular()
 get_data()
 
+function go_listen(d){
 
+  var podcasts = d.id
+  localStorage.setItem("podcasts",podcasts)
+  window.location.href= "./listen.html"
+}
 $("#searchgeneral").mouseup(function() {
     generalSearch = document.getElementById("generalSearch").value
 

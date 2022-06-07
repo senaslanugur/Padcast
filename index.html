@@ -14,6 +14,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="https://sb-ui-kit-pro.startbootstrap.com/css/styles.css">
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
@@ -21,7 +22,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-lg-5">
                 <img src="assets/favicon.ico"style="width:35px;height:35px; border-radius: 30px;">
-                <a class="navbar-brand" href="#!">Podcast</a>
+                <a class="navbar-brand" href="./index.html">Podcast</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -32,29 +33,52 @@
             </div>
         </nav>
         <!-- Header-->
-        <br>
-        <header class="py-5">
-          <div class="container px-lg-5" >
-              <div class="p-4 p-lg-5 rounded-3 text-center">
-                  <div class="m-4 m-lg-5"  >
-                      <img src="assets/podcast.png"style="width:200px;height:200px;  border-radius: 50%;">
-                      <br>
-                      <h2 class="display-5 fw-bold" style="color:#ffa916">Be alive with Podcast</h1>
 
-                      <!-- <p class="fs-4">Bootstrap utility classes are used to create this jumbotron since the old component has been removed from the framework. Why create custom CSS when you can use utilities?</p>
-                      <a class="btn btn-primary btn-lg" href="#!">Call to action</a> -->
+        <header class="py-5">
+          <div class="badge rounded-pill bg-primary-soft text-primary badge-marketing mb-3">Popular Podcasts</div>
+          <div class="container px-lg-5" >
+
+                  <div class="m-4 m-lg-5"  >
+
+                    <div id="wrapper">
+                        <div id="carousel">
+                          <div id="content">
+                            <!-- Slider icin
+                             <div>
+                              <img  class="item" src="assets/podcast.png"/>
+                              <h5 class="fw-bolder">test</h5>
+                            </div>
+                           -->
+                          </div>
+                        </div>
+                        <button id="prev">
+                          <svg xmlns="http://www.w3.org/2000/svg"   width="12" height="12" viewBox="0 0 24 24" >
+                            <path fill="none" d="M0 0h24v24H0V0z" />
+                            <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+                          </svg>
+                        </button>
+                        <button id="next">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" >
+                            <path fill="none" d="M0 0h24v24H0V0z" />
+                            <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+                          </svg>
+                        </button>
+                      </div>
                   </div>
-              </div>
           </div>
         </header>
-        <br>
+
         <!-- Page Content-->
+
+      <div class="badge rounded-pill bg-primary-soft text-primary badge-marketing mb-3">Categories</div>
       <div>
         <input type="text" id="generalSearch" placeholder="Search any podcast in any language" title="Type in a name">
         <button type="button" id="searchgeneral" class="btn btn-primary" style="padding: 11px; position: absolute; right: 0px;">Search</button>
       </div>
         <section class="py-5">
+
                     <div class="container px-4 px-lg-5 mt-5">
+
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="interface">
 
                             <!-- <div class="col mb-5">
@@ -73,6 +97,7 @@
                         </div>
                     </div>
           </section>
+
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; USoft by senaslanbilisim 2022</p></div>
