@@ -9,7 +9,7 @@ function get_popular(){
                 // console.log(myArr)
                 var popular_div = document.getElementById("content")
                 for(var i = 0; i<myArr.length;i++){
-                  popular_div.innerHTML += '<div><img  onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+myArr[i].pId+'" class="item" src="'+myArr[i].imageHD+'"/><h5 class="fw-bolder">'+myArr[i].title+'</h5> by '+myArr[i].publisher+'</div>'
+                  popular_div.innerHTML += '<div><img  style="border-radius: 40%;" onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+myArr[i].pId+'" class="item" src="'+myArr[i].imageHD+'"/><h5 class="fw-bolder">'+myArr[i].title+'</h5> by '+myArr[i].publisher+'</div>'
 
                 }
 
