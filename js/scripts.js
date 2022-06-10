@@ -8,12 +8,12 @@ function get_popular(){
                 myArr = JSON.parse(myArr.contents)
                 // console.log(myArr)
                 var popular_div = document.getElementById("content")
+
                 for(var i = 0; i<myArr.length;i++){
-                  popular_div.innerHTML += '<div><img  style="border-radius: 40%;" onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+myArr[i].pId+'" class="item" src="'+myArr[i].imageHD+'"/><h5 class="fw-bolder">'+myArr[i].title+'</h5> by '+myArr[i].publisher+'</div>'
+                  popular_div.innerHTML += '<div><img  style="border-radius: 40%;" onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+myArr[i].pId+'+'+myArr[i].imageHD+'+'+myArr[i].title+'" class="item" src="'+myArr[i].imageHD+'"/><h5 class="fw-bolder">'+myArr[i].title+'</h5> by '+myArr[i].publisher+'</div>'
 
                 }
 
-            }else{
             }
         };
 
@@ -93,7 +93,32 @@ get_data()
 function go_listen(d){
 
   var podcasts = d.id
-  localStorage.setItem("podcasts",podcasts)
+  var url = podcasts.split("+")[0]
+  var image = podcasts.split("+")[1]
+  var title = podcasts.split("+")[2]
+
+  var obj = []
+  var item = {}
+  item["url"] = url
+  item["image"] = image
+  item["title"] = title
+  obj.push(item)
+
+  var db  = Object.entries(localStorage)
+  var keys = []
+  for(var i=0; i<db.length;i++){
+    keys.push(db[i][0])
+  }
+
+  if(keys.includes("recently")){
+    var db_recent = JSON.parse(localStorage.getItem("recently"))
+    db_recent.push(obj)
+    localStorage.setItem("recently",JSON.stringify(db_recent))
+  }else{
+    localStorage.setItem("recently",JSON.stringify(obj))
+  }
+
+  localStorage.setItem("podcasts",url)
   window.location.href= "./listen.html"
 }
 $("#searchgeneral").mouseup(function() {
@@ -119,3 +144,32 @@ function about(){
     imageAlt: 'Custom image',
   });
   }
+
+  function recently_list(){
+    var db  = Object.entries(localStorage)
+    var keys = []
+    for(var i=0; i<db.length;i++){
+      keys.push(db[i][0])
+    }
+
+    if(keys.includes("recently")){
+      console.log("var")
+      // console.log(JSON.parse(localStorage.getItem("recently"))[0].url)
+      var db_recent = JSON.parse(localStorage.getItem("recently"))
+      var recently = document.getElementById("recently")
+      var content2 = document.getElementById("content2")
+      db_recent = db_recent.reverse()
+      for(var i=0;i<db_recent.length-1;i++){
+        content2.innerHTML += '<div><img  style="border-radius: 40%;" onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+db_recent[i][0].url+'+'+db_recent[i][0].image+'+'+db_recent[i][0].title+'" class="item" src="'+db_recent[i][0].image+'"/><h5 class="fw-bolder">'+db_recent[i][0].title+'</h5></div>'
+      }
+      content2.innerHTML += '<div><img  style="border-radius: 40%;" onclick=go_listen(this) id ="https://www.podcastrepublic.net/podcast/'+db_recent[db_recent.length-1].url+'+'+db_recent[db_recent.length-1].image+'+'+db_recent[db_recent.length-1].title+'" class="item" src="'+db_recent[db_recent.length-1].image+'"/><h5 class="fw-bolder">'+db_recent[db_recent.length-1].title+'</h5></div>'
+
+    }else{
+      var recently = document.getElementById("recently")
+      recently.style.display="none";
+    }
+
+
+  }
+
+  recently_list()
